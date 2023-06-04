@@ -6,6 +6,8 @@ package qlks.view;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -178,7 +180,13 @@ public class AllRoomView extends javax.swing.JFrame {
             row[0] = p.getSoPhong();
             row[1] = p.getLoaiPhong();
             row[2] = p.getSoLuongGiuong();
-            row[3] = p.getGia();
+            //row[3] = p.getGia();
+            // đoạn code này sửa lại hiển thị giá theo yêu cầu của thầy 
+            DecimalFormat df = new DecimalFormat("#,##0");
+            String formattedPrice = df.format(p.getGia());
+
+            row[3] = formattedPrice+" VND";
+
             if(p.isDaDuocDat()) {
                 row[4] = "Đã được đặt";
             }else{

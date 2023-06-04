@@ -24,7 +24,7 @@ public class HoaDonDao {
         try {
             List<Hoadon> hoaDonList = readHoaDonFromFile();
             hoaDonList.add(hoadon);
-            FileOutputStream fos = new FileOutputStream("src\\main\\java\\qlks\\File\\HoaDon.dat");
+            FileOutputStream fos = new FileOutputStream("File\\HoaDon.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(hoaDonList);
             oos.close();
@@ -39,7 +39,7 @@ public class HoaDonDao {
     
     public List<Hoadon> readHoaDonFromFile() throws IOException, ClassNotFoundException {
         List<Hoadon> hoaDonList = new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src\\main\\java\\qlks\\File\\HoaDon.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("File\\HoaDon.dat"))) {
             hoaDonList = (List<Hoadon>) ois.readObject();
         } catch (EOFException e) {
             e.printStackTrace();

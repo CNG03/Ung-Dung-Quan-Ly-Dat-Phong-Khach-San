@@ -351,7 +351,7 @@
                     <Column editable="false" title="S&#x1ed1; ph&#xf2;ng" type="java.lang.Integer"/>
                     <Column editable="false" title="Lo&#x1ea1;i ph&#xf2;ng" type="java.lang.String"/>
                     <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng gi&#x1b0;&#x1edd;ng" type="java.lang.Integer"/>
-                    <Column editable="false" title="Gi&#xe1;" type="java.lang.Double"/>
+                    <Column editable="false" title="Gi&#xe1;" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="selectionMode" type="int" value="2"/>

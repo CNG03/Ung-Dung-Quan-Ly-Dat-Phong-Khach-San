@@ -30,7 +30,7 @@ public class DatPhongDao {
 //            }
             DatphongList.add(datPhong);
                
-            FileOutputStream fos = new FileOutputStream("src\\main\\java\\qlks\\File\\DatPhong.dat");
+            FileOutputStream fos = new FileOutputStream("File\\DatPhong.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(DatphongList);
             oos.close();
@@ -45,7 +45,7 @@ public class DatPhongDao {
 
     public List<Datphong> readDatPhongFromFile() throws IOException, ClassNotFoundException {
         List<Datphong> DatphongList = new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src\\main\\java\\qlks\\File\\DatPhong.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("File\\DatPhong.dat"))) {
             DatphongList = (List<Datphong>) ois.readObject();
         } catch (EOFException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class DatPhongDao {
     
     public boolean saveListDatPhong(List<Datphong> datPhong) throws IOException, ClassNotFoundException {
         try {
-            FileOutputStream fos = new FileOutputStream("src\\main\\java\\qlks\\File\\DatPhong.dat");
+            FileOutputStream fos = new FileOutputStream("File\\DatPhong.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(datPhong);
             oos.close();

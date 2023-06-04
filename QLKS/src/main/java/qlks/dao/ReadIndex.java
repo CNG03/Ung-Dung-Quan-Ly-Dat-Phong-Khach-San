@@ -17,7 +17,7 @@ import java.io.ObjectOutputStream;
 public class ReadIndex {
     public static void writeIntToFile(int number) {
         try {
-            FileOutputStream fos = new FileOutputStream("src\\main\\java\\qlks\\File\\index.dat");
+            FileOutputStream fos = new FileOutputStream("File\\index.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeInt(number);
             oos.close();
@@ -30,7 +30,7 @@ public class ReadIndex {
     public static int readIntFromFile() {
         int number = 0;
         try {
-            FileInputStream fis = new FileInputStream("src\\main\\java\\qlks\\File\\index.dat");
+            FileInputStream fis = new FileInputStream("File\\index.dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
             number = ois.readInt();
             ois.close();

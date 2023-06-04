@@ -8,9 +8,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -626,7 +630,11 @@ public class XemDonDatPhongView extends javax.swing.JFrame {
             row[1] = dp.getKH().getHoten();
             row[2] = "0"+dp.getKH().getSdt();
             row[3] = strNumbers;
-            row[4] = dp.getThoiGianDatPhong();
+            Date date = dp.getThoiGianDatPhong();
+            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+            String ngayTiengViet = localDate.format(dinhDang);
+            row[4] = ngayTiengViet;
             model.addRow(row);
         }
     }
@@ -680,8 +688,15 @@ public class XemDonDatPhongView extends javax.swing.JFrame {
         addressjTextField1.setText(hoadon.getDatphong().getKH().getAddress());
         phonejTextField1.setText("0"+String.valueOf(hoadon.getDatphong().getKH().getSdt()));
         emailjTextField1.setText(hoadon.getDatphong().getKH().getEmail());
-        thoiGianDatPhongjTextField1.setText(String.valueOf(hoadon.getDatphong().getThoiGianDatPhong()));
-        ngayTraPhongjTextField.setText(String.valueOf(hoadon.getNgay()));
+        Date date = hoadon.getDatphong().getThoiGianDatPhong();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+        String ngayTiengViet = localDate.format(dinhDang);
+        thoiGianDatPhongjTextField1.setText(ngayTiengViet);
+        date = hoadon.getNgay();
+        localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        ngayTiengViet = localDate.format(dinhDang);
+        ngayTraPhongjTextField.setText(ngayTiengViet);
         tongtienjTextField.setText(String.valueOf(hoadon.getTongTien()));
         DefaultTableModel model = (DefaultTableModel) phongTrongjTable1.getModel();
         model.setRowCount(0);
@@ -828,7 +843,11 @@ public class XemDonDatPhongView extends javax.swing.JFrame {
             phonejTextField.setEditable(false);
             emailjTextField.setText(d.getKH().getEmail());
             emailjTextField.setEditable(false);
-            thoiGianDatPhongjTextField.setText(String.valueOf(d.getThoiGianDatPhong()));
+            Date date = d.getThoiGianDatPhong();
+            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+            String ngayTiengViet = localDate.format(dinhDang);
+            thoiGianDatPhongjTextField.setText(ngayTiengViet);
             thoiGianDatPhongjTextField.setEditable(false);
             List<Phong> phong =d.getPh();
             for (Phong p : phong) {

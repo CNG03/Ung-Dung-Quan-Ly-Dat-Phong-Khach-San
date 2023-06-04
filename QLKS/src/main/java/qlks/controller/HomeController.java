@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import qlks.entity.User;
 import qlks.view.AllRoomView;
 import qlks.view.DatPhongView;
@@ -115,8 +116,10 @@ public class HomeController {
     
     class ExitProgramListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-
+            int dialogResult = JOptionPane.showConfirmDialog(home, "Bạn có chắc chắn muốn thoát chương trình không?");
+            if(dialogResult == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         }
     }
     class DatPhongListener implements ActionListener {

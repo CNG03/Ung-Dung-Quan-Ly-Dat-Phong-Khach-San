@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -180,9 +181,16 @@ public class HomeView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -472,7 +480,12 @@ public class HomeView extends javax.swing.JFrame {
                 row[0] = p.getSoPhong();
                 row[1] = p.getLoaiPhong();
                 row[2] = p.getSoLuongGiuong();
-                row[3] = String.valueOf(p.getGia());
+                // đoạn code này sửa lại hiển thị giá theo yêu cầu của thầy 
+                DecimalFormat df = new DecimalFormat("#,##0");
+                String formattedPrice = df.format(p.getGia());
+
+                row[3] = formattedPrice+" VND";
+                //row[3] = String.valueOf(p.getGia());
                 model.addRow(row);
             }
         }

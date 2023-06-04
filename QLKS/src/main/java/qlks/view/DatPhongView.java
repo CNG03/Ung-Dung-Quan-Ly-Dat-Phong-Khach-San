@@ -6,6 +6,7 @@ package qlks.view;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -227,7 +228,7 @@ public class DatPhongView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -384,7 +385,11 @@ public class DatPhongView extends javax.swing.JFrame {
             row[0] = p.getSoPhong();
             row[1] = p.getLoaiPhong();
             row[2] = p.getSoLuongGiuong();
-            row[3] = p.getGia();
+            // đoạn code này sửa lại hiển thị giá theo yêu cầu của thầy 
+            DecimalFormat df = new DecimalFormat("#,##0");
+            String formattedPrice = df.format(p.getGia());
+            row[3] = formattedPrice+" VND";
+            //row[3] = p.getGia();
             model.addRow(row);
         }
         
@@ -657,7 +662,6 @@ public class DatPhongView extends javax.swing.JFrame {
     private javax.swing.JButton chonPhongjButton;
     private javax.swing.JLabel chonPhongjLabel;
     private javax.swing.JTextField emailjTextField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -665,13 +669,10 @@ public class DatPhongView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField phonejTextField;

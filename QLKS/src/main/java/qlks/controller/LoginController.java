@@ -29,20 +29,12 @@ public class LoginController {
     private UserDao userDao;
     private LoginView loginView;
     private HomeView home;
-    //mot bien chua man hinh chinh o day
-    
-    
-    
     
     class LoginListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             User user = loginView.getUser();
             if (userDao.checkUser(user)) {
                 try {
-                    // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
-                    //studentView = new StudentView();
-                    //StudentController studentController = new StudentController(studentView);
-                    //studentController.showStudentView();
                     createFile file = new createFile();
                     file.autoCreateAllFile();
                     home = new HomeView();

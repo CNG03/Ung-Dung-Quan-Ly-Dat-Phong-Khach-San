@@ -14,7 +14,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>qlks.app.App</mainClass> <!-- Thay "com.example.MainClass" bằng tên class của bạn -->
+                            <mainClass>com.example.MainClass</mainClass> <!-- Thay "com.example.MainClass" bằng tên class của bạn -->
                         </manifest>
                     </archive>
                 </configuration>
@@ -35,5 +35,5 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>com.mycompany.qlks.QLKS</exec.mainClass>
     </properties>
-    <name>QLKSCopy</name>
+    
 </project>

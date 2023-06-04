@@ -27,6 +27,7 @@ public class LoginView extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //JOptionPane.showMessageDialog(this, "Tên người dùng hoặc mật khẩu không đúng!", "Message Error", JOptionPane.ERROR_MESSAGE);
+        setDefaultText();
     }
 
     /**
@@ -135,30 +136,10 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    private boolean checkLogin(String username, String password) {
-//        boolean result = false;
-//        try {
-//            File file = new File("C:\\Users\\tt\\OneDrive\\Documents\\NetBeansProjects\\QLKS\\src\\main\\java\\qlks\\File\\User.txt");
-//            Scanner scanner = new Scanner(file);
-//
-//            while (scanner.hasNextLine()) {
-//                String line = scanner.nextLine();
-//                String[] parts = line.split(" ");
-//                String fileUsername = parts[0];
-//                String filePassword = parts[1];
-//
-//                if (username.equals(fileUsername) && password.equals(filePassword)) {
-//                    result = true;
-//                    break;
-//                }
-//            }
-//            scanner.close();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//    return result;
-//}
+    public void setDefaultText() {
+        UserNameTextField.setText("a");
+        PasswordTextField.setText("1");
+    }
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
     }

@@ -18,7 +18,7 @@ public class createFile {
     public void autoCreateFileDatPhong() {
         try {
             
-            File file = new File("src\\main\\java\\qlks\\File//DatPhong.dat");
+            File file = new File("File//DatPhong.dat");
             if (!file.exists()) {
             file.createNewFile();
             }   
@@ -31,7 +31,7 @@ public class createFile {
     public void autoCreateFileDanhSachPhongDat() {
         try {
             
-            File file = new File("src\\main\\java\\qlks\\File//DanhSachPhong.dat");
+            File file = new File("File//DanhSachPhong.dat");
             if (!file.exists()) {
             file.createNewFile();
             }   
@@ -44,7 +44,7 @@ public class createFile {
     public void autoCreateFileHoaDonDat() {
         try {
             
-            File file = new File("src\\main\\java\\qlks\\File//HoaDon.dat");
+            File file = new File("File//HoaDon.dat");
             if (!file.exists()) {
             file.createNewFile();
             }   
@@ -57,7 +57,7 @@ public class createFile {
     public void autoCreateFileIndexDat() {
         try {
             
-            File file = new File("src\\main\\java\\qlks\\File//index.dat");
+            File file = new File("File//index.dat");
             if (!file.exists()) {
             file.createNewFile();
             }   

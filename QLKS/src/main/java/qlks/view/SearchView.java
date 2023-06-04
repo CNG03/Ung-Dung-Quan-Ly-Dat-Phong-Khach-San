@@ -6,8 +6,13 @@ package qlks.view;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 import qlks.dao.DatPhongDao;
 import qlks.dao.HoaDonDao;
@@ -294,7 +299,11 @@ public class SearchView extends javax.swing.JFrame {
                 Object[] row = new Object[5];
                 row[0] = d.getIdDatPhong();
                 row[1] = d.getKH().getHoten();
-                row[2] = String.valueOf(d.getThoiGianDatPhong());
+                Date date = d.getThoiGianDatPhong();
+                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+                String ngayTiengViet = localDate.format(dinhDang);
+                row[2] = ngayTiengViet;
                 List<Integer> sp = new ArrayList<>();
                 for(Phong p : d.getPh()) {
                     sp.add(p.getSoPhong());
@@ -318,7 +327,11 @@ public class SearchView extends javax.swing.JFrame {
                 Object[] row = new Object[5];
                 row[0] = d.getDatphong().getIdDatPhong();
                 row[1] = d.getDatphong().getKH().getHoten();
-                row[2] = String.valueOf(d.getDatphong().getThoiGianDatPhong());
+                Date date = d.getDatphong().getThoiGianDatPhong();
+                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+                String ngayTiengViet = localDate.format(dinhDang);
+                row[2] = ngayTiengViet;
                 List<Integer> sp = new ArrayList<>();
                 for(Phong p : d.getDatphong().getPh()) {
                     sp.add(p.getSoPhong());
@@ -351,7 +364,11 @@ public class SearchView extends javax.swing.JFrame {
                 Object[] row = new Object[4];
                 row[0] = d.getMshd();
                 row[1] = d.getDatphong().getKH().getHoten();
-                row[2] = String.valueOf(d.getNgay());
+                Date date = d.getNgay();
+                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+                String ngayTiengViet = localDate.format(dinhDang);
+                row[2] = ngayTiengViet;
                 row[3] = d.getTongTien();
                 model.addRow(row);
             }

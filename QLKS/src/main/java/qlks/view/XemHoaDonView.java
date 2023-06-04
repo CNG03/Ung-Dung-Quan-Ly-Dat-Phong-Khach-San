@@ -8,7 +8,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -106,7 +112,7 @@ public class XemHoaDonView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -290,7 +296,7 @@ public class XemHoaDonView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -411,9 +417,22 @@ public class XemHoaDonView extends javax.swing.JFrame {
             Object[] row = new Object[5];
             row[0] = h.getMshd();
             row[1] = h.getDatphong().getKH().getHoten();
-            row[2] = String.valueOf(h.getDatphong().getThoiGianDatPhong());
-            row[3] = String.valueOf(h.getNgay());
-            row[4] = h.getTongTien();
+            Date date = h.getDatphong().getThoiGianDatPhong();
+            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+            String ngayTiengViet = localDate.format(dinhDang);
+            row[2] = String.valueOf(ngayTiengViet); 
+            //row[2] = String.valueOf(h.getDatphong().getThoiGianDatPhong()); 
+            date = h.getNgay();
+            localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            ngayTiengViet = localDate.format(dinhDang);
+            row[3] = String.valueOf(ngayTiengViet);
+            // đoạn code này sửa lại hiển thị giá theo yêu cầu của thầy 
+            DecimalFormat df = new DecimalFormat("#,##0");
+            String formattedPrice = df.format(h.getTongTien());
+
+            row[4] = formattedPrice+" VND";
+           // row[4] = h.getTongTien();
             model.addRow(row);
         }
     }
@@ -479,9 +498,20 @@ public class XemHoaDonView extends javax.swing.JFrame {
         addressjTextField1.setText(hoadon.getDatphong().getKH().getAddress());
         phonejTextField1.setText("0"+String.valueOf(hoadon.getDatphong().getKH().getSdt()));
         emailjTextField1.setText(hoadon.getDatphong().getKH().getEmail());
-        thoiGianDatPhongjTextField1.setText(String.valueOf(hoadon.getDatphong().getThoiGianDatPhong()));
-        ngayTraPhongjTextField.setText(String.valueOf(hoadon.getNgay()));
-        tongtienjTextField.setText(String.valueOf(hoadon.getTongTien()));
+        Date date = hoadon.getDatphong().getThoiGianDatPhong();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter dinhDang = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("vi"));
+        String ngayTiengViet = localDate.format(dinhDang);
+        thoiGianDatPhongjTextField1.setText(String.valueOf(ngayTiengViet));
+        date = hoadon.getNgay();
+        localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();        
+        ngayTiengViet = localDate.format(dinhDang);
+        ngayTraPhongjTextField.setText(String.valueOf(ngayTiengViet));
+        //
+        DecimalFormat ds = new DecimalFormat("#,##0");
+        String formattedPrice = ds.format(hoadon.getTongTien());
+        //
+        tongtienjTextField.setText(formattedPrice+" VND");
         DefaultTableModel model = (DefaultTableModel) phongTrongjTable1.getModel();
         model.setRowCount(0);
         List<Phong> phong =hoadon.getDatphong().getPh();
@@ -490,7 +520,12 @@ public class XemHoaDonView extends javax.swing.JFrame {
                 row[0] = p.getSoPhong();
                 row[1] = p.getLoaiPhong();
                 row[2] = p.getSoLuongGiuong();
-                row[3] = p.getGia();
+                // đoạn code này sửa lại hiển thị giá theo yêu cầu của thầy 
+                DecimalFormat df = new DecimalFormat("#,##0");
+                String tongtienPrice = df.format(p.getGia());
+
+                row[3] = tongtienPrice+" VND";
+                //row[3] = p.getGia();
                 model.addRow(row);
             }
     }

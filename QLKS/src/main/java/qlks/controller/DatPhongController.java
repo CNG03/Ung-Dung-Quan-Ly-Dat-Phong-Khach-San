@@ -80,51 +80,7 @@ public class DatPhongController {
             }
         }
     }
-   
 
-    
-//    class OkeListener implements ActionListener {
-//        public void actionPerformed(ActionEvent e) {
-//            DatPhongDao dpd = new DatPhongDao();
-//            Datphong dp = dpv.getDatPhongInfo();
-//            if(dp ==null){
-//                JOptionPane.showMessageDialog(dpv, "Thêm phòng không thành công! tra ve doi tuong null");
-//                dpv.setVisible(true);
-//                return;
-//            }
-//           
-//            
-//            try {
-//                if (dpd.saveDatPhong(dp)) {
-//                    
-//                    HomeView home = new HomeView();
-//                    HomeController homeController = new HomeController(home);
-//                    homeController.showHome();
-//                    List<Datphong> test =dpd.readDatPhongFromFile();
-//                    for(Datphong b : test) {
-//                        if (b != null) {
-//                            System.out.println(b.getKH().getHoten());
-//                        }
-//                    }
-//
-//                    dpv.setVisible(false);
-//                    return;
-//                } else {
-//                    JOptionPane.showMessageDialog(dpv, "Thêm phòng không thành công!");
-//                    return;
-//                }
-//            } catch (IOException ex) {
-//                Logger.getLogger(DatPhongController.class.getName()).log(Level.SEVERE, null, ex);
-//                dpv.setVisible(true);
-//                return;
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(DatPhongController.class.getName()).log(Level.SEVERE, null, ex);
-//                dpv.setVisible(true);
-//                return;
-//            }
-//        }
-//    }
-    
     class OkeListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         
